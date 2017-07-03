@@ -81,12 +81,12 @@ if ( ! class_exists( 'Charitable_Admin_Pages' ) ) :
 		 */
 		public function add_menu() {
 			add_menu_page(
-                'Charitable',
-                'Charitable',
-                $this->admin_menu_capability,
-                $this->admin_menu_parent_page,
-                array( $this, 'render_welcome_page' )
-            );
+				'Charitable',
+				'Charitable',
+				$this->admin_menu_capability,
+				$this->admin_menu_parent_page,
+				array( $this, 'render_welcome_page' )
+			);
 
 			foreach ( $this->get_submenu_pages() as $page ) {
 				if ( ! isset( $page['page_title'] )
@@ -125,36 +125,36 @@ if ( ! class_exists( 'Charitable_Admin_Pages' ) ) :
 
 			return apply_filters( 'charitable_submenu_pages', array(
 				array(
-					'page_title'    => $campaign_post_type->labels->menu_name,
-					'menu_title'    => $campaign_post_type->labels->menu_name,
-					'menu_slug'     => 'edit.php?post_type=campaign',
+					'page_title' => $campaign_post_type->labels->menu_name,
+					'menu_title' => $campaign_post_type->labels->menu_name,
+					'menu_slug'  => 'edit.php?post_type=campaign',
 				),
 				array(
-					'page_title'    => $campaign_post_type->labels->add_new,
-					'menu_title'    => $campaign_post_type->labels->add_new,
-					'menu_slug'     => 'post-new.php?post_type=campaign',
+					'page_title' => $campaign_post_type->labels->add_new,
+					'menu_title' => $campaign_post_type->labels->add_new,
+					'menu_slug'  => 'post-new.php?post_type=campaign',
 				),
 				array(
-					'page_title'    => $donation_post_type->labels->menu_name,
-					'menu_title'    => $donation_post_type->labels->menu_name,
-					'menu_slug'     => 'edit.php?post_type=donation',
+					'page_title' => $donation_post_type->labels->menu_name,
+					'menu_title' => $donation_post_type->labels->menu_name,
+					'menu_slug'  => 'edit.php?post_type=donation',
 				),
 				array(
-					'page_title'    => __( 'Campaign Categories', 'charitable' ),
-					'menu_title'    => __( 'Categories', 'charitable' ),
-					'menu_slug'     => 'edit-tags.php?taxonomy=campaign_category&post_type=campaign',
+					'page_title' => __( 'Campaign Categories', 'charitable' ),
+					'menu_title' => __( 'Categories', 'charitable' ),
+					'menu_slug'  => 'edit-tags.php?taxonomy=campaign_category&post_type=campaign',
 				),
 				array(
-					'page_title'    => __( 'Campaign Tags', 'charitable' ),
-					'menu_title'    => __( 'Tags', 'charitable' ),
-					'menu_slug'     => 'edit-tags.php?taxonomy=campaign_tag&post_type=campaign',
+					'page_title' => __( 'Campaign Tags', 'charitable' ),
+					'menu_title' => __( 'Tags', 'charitable' ),
+					'menu_slug'  => 'edit-tags.php?taxonomy=campaign_tag&post_type=campaign',
 				),
 				array(
-					'page_title'    => __( 'Charitable Settings', 'charitable' ),
-					'menu_title'    => __( 'Settings', 'charitable' ),
-					'menu_slug'     => 'charitable-settings',
-					'function'      => array( $this, 'render_settings_page' ),
-					'capability'    => 'manage_charitable_settings',
+					'page_title' => __( 'Charitable Settings', 'charitable' ),
+					'menu_title' => __( 'Settings', 'charitable' ),
+					'menu_slug'  => 'charitable-settings',
+					'function'   => array( $this, 'render_settings_page' ),
+					'capability' => 'manage_charitable_settings',
 				),
 			) );
 		}
@@ -199,15 +199,15 @@ if ( ! class_exists( 'Charitable_Admin_Pages' ) ) :
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
-         *
+		 *
 		 * @deprecated 1.4.0
 		 */
 		public function render_donations_page() {
 			charitable_get_deprecated()->deprecated_function(
-                __METHOD__,
-                '1.4.0',
-                __( 'Donations page now rendered by WordPress default manage_edit-donation_columns', 'charitable' )
-            );
+				__METHOD__,
+				'1.4.0',
+				__( 'Donations page now rendered by WordPress default manage_edit-donation_columns', 'charitable' )
+			);
 
 			charitable_admin_view( 'donations-page/page' );
 		}
@@ -222,6 +222,7 @@ if ( ! class_exists( 'Charitable_Admin_Pages' ) ) :
 		public function render_welcome_page() {
 			charitable_admin_view( 'welcome-page/page' );
 		}
+
 	}
 
 endif;
