@@ -32,7 +32,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param 	mixed $benefactor Benefactor ID.
+		 * @param  mixed  $benefactor  Benefactor ID.
 		 * @access 	public
 		 * @since	1.0.0
 		 */
@@ -45,8 +45,8 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return an object of type Charitable_Benefactor, given a benefactor record and an extension.
 		 *
-		 * @param 	Object $benefactor Benefactor object.
-		 * @param 	string $extension  Extension generating the benefactor object.
+		 * @param   Object                 $benefactor  Benefactor object.
+		 * @param   string                 $extension   Extension generating the benefactor object.
 		 * @return  Charitable_Benefactor
 		 * @access  public
 		 * @static
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Display a short one-line summary of a benefactor (how much is contributed and from where).
 		 *
-		 * @return 	string
+		 * @return  string
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -80,8 +80,8 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Magic getter method.
 		 *
-		 * @param 	string $key Key of the field to get.
-		 * @return 	string
+		 * @param   string  $key  Key of the field to get.
+		 * @return  string
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return the details of the benefactor (i.e. the 3rd party extension).
 		 *
-		 * @return 	Object
+		 * @return  Object
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -113,7 +113,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return the contribution as a nicely formatted amount.
 		 *
-		 * @return 	string
+		 * @return  string
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -152,8 +152,8 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return the benefit amount of a product based on the price, quantity and percent going to benefit.
 		 *
-		 * @param   float $price    Price of the item.
-		 * @param   int   $quantity Number of items.
+		 * @param   float  $price     Price of the item.
+		 * @param   int    $quantity  Number of items.
 		 * @return  float
 		 * @access  protected
 		 * @since   1.0.0
@@ -165,7 +165,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return the benefit amount of a product based on the quantity and fixed amount going per item.
 		 *
-		 * @param   int $quantity The number of items.
+		 * @param   int    $quantity  The number of items.
 		 * @return  float
 		 * @access  protected
 		 * @since   1.0.0
@@ -186,6 +186,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		protected function benefit_is_per_cart() {
 			return false === ( $this->benefactor->contribution_amount_is_per_item || $this->benefactor->contribution_amount_is_percentage );
 		}
+
 	}
 
 endif;
