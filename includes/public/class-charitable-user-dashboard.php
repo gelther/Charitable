@@ -76,7 +76,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 		 * Returns the user dashboard navigation menu.
 		 *
 		 * @uses    wp_nav_menu
-		 * @param   array       $args
+		 * @param   array  $args
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -95,7 +95,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 		/**
 		 * Return the menu ID based on the theme location.
 		 *
-		 * @return  int         0 if no menu found. Menu ID otherwise.
+		 * @return  int  0 if no menu found. Menu ID otherwise.
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -173,7 +173,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 		/**
 		 * Checks whether the current requested page is in the user dashboard nav.
 		 *
-		 * @param   Object $object Optional. If not set, will base it on the current queried object.
+		 * @param   Object   $object  Optional. If not set, will base it on the current queried object.
 		 * @return  boolean
 		 * @access  public
 		 * @since   1.0.0
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 		/**
 		 * Loads the user dashboard template.
 		 *
-		 * @param   string $template
+		 * @param   string  $template
 		 * @return  string
 		 * @access  public
 		 * @since   1.0.0
@@ -234,7 +234,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 		/**
 		 * Add the user-dashboard class to the body if we're looking at it.
 		 *
-		 * @param   array       $classes
+		 * @param   array  $classes
 		 * @return  array
 		 * @access  public
 		 * @since   1.0.0
@@ -248,6 +248,7 @@ if ( ! class_exists( 'Charitable_User_Dashboard' ) ) :
 
 			return $classes;
 		}
+
 	}
 
 endif;
