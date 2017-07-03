@@ -90,7 +90,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 		/**
 		 * Register table.
 		 *
-		 * @param   array $tables Registered tables.
+		 * @param   array  $tables  Registered tables.
 		 * @return  array
 		 * @access  public
 		 * @since   1.0.0
@@ -103,8 +103,8 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 		/**
 		 * Display a benefactor relationship block inside of a meta box on campaign pages.
 		 *
-		 * @param   Charitable_Benefactor $benefactor Benefactor object.
-		 * @param   string                $extension  Extension this benefactor object is created by.
+		 * @param   Charitable_Benefactor  $benefactor  Benefactor object.
+		 * @param   string                 $extension   Extension this benefactor object is created by.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -112,15 +112,15 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 		public function benefactor_meta_box( $benefactor, $extension ) {
 			charitable_admin_view( 'metaboxes/campaign-benefactors/summary', array(
 				'benefactor' => $benefactor,
-				'extension' => $extension,
+				'extension'  => $extension,
 			) );
 		}
 
 		/**
 		 * Display benefactor relationship form.
 		 *
-		 * @param   Charitable_Benefactor $benefactor Benefactor object.
-		 * @param   string                $extension  Extension this benefactor object is created by.
+		 * @param   Charitable_Benefactor  $benefactor  Benefactor object.
+		 * @param   string                 $extension   Extension this benefactor object is created by.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -128,14 +128,14 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 		public function benefactor_form( $benefactor, $extension ) {
 			charitable_admin_view( 'metaboxes/campaign-benefactors/form', array(
 				'benefactor' => $benefactor,
-				'extension' => $extension,
+				'extension'  => $extension,
 			) );
 		}
 
 		/**
 		 * Save benefactors when saving campaign.
 		 *
-		 * @param   WP_Post $post Post object.
+		 * @param   WP_Post  $post  Post object.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -146,7 +146,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 			}
 
 			$currency_helper = charitable_get_currency_helper();
-			$benefactors = $_POST['_campaign_benefactor'];
+			$benefactors     = $_POST['_campaign_benefactor'];
 
 			foreach ( $benefactors as $campaign_benefactor_id => $data ) {
 
@@ -155,9 +155,9 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 					continue;
 				}
 
-				$data['campaign_id'] = $post->ID;
+				$data['campaign_id']                       = $post->ID;
 				$data['contribution_amount_is_percentage'] = intval( false !== strpos( $data['contribution_amount'], '%' ) );
-				$data['contribution_amount'] = $currency_helper->sanitize_monetary_amount( $data['contribution_amount'] );
+				$data['contribution_amount']               = $currency_helper->sanitize_monetary_amount( $data['contribution_amount'] );
 
 				/* If the contribution amount was set to 0, we won't create a benefactor object. */
 				if ( 0 == $data['contribution_amount'] ) {
@@ -176,7 +176,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 				$campaign_end_date = get_post_meta( $post->ID, '_campaign_end_date', true );
 
 				if ( isset( $data['date_deactivated'] ) && strlen( $data['date_deactivated'] ) ) {
-					$date_deactivated = charitable_sanitize_date( $data['date_deactivated'], 'Y-m-d 00:00:00' );
+					$date_deactivated         = charitable_sanitize_date( $data['date_deactivated'], 'Y-m-d 00:00:00' );
 					$data['date_deactivated'] = ( $campaign_end_date && $campaign_end_date < $date_deactivated ) ? $campaign_end_date : $date_deactivated;
 				} elseif ( 0 != $campaign_end_date ) {
 					$data['date_deactivated'] = $campaign_end_date;
@@ -209,8 +209,8 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 
 			charitable_admin_view( 'metaboxes/campaign-benefactors/form', array(
 				'benefactor' => null,
-				'extension' => $_POST['extension'],
-				'index' => "_{$idx}",
+				'extension'  => $_POST['extension'],
+				'index'      => "_{$idx}",
 			) );
 
 			echo ob_get_clean();
@@ -235,7 +235,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 				$return = array( 'error' => __( 'No benefactor ID provided.', 'charitable' ) );
 			} else {
 				$deleted = charitable_get_table( 'benefactors' )->delete( $benefactor_id );
-				$return = array( 'deleted' => $deleted );
+				$return  = array( 'deleted' => $deleted );
 			}
 
 			echo json_encode( $return );
@@ -265,7 +265,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 		/**
 		 * Activate the addon.
 		 *
-		 * @return  boolean Whether the addon is activated.
+		 * @return  boolean  Whether the addon is activated.
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -284,6 +284,7 @@ if ( ! class_exists( 'Charitable_Benefactors' ) ) :
 
 			return true;
 		}
+
 	}
 
 endif;
