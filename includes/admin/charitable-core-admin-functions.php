@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * Example usage: charitable_admin_view('metaboxes/cause-metabox');
  *
- * @param 	string $view      The view to display.
- * @param 	array  $view_args Optional. Arguments to pass through to the view itself.
- * @return 	void
+ * @param   string  $view       The view to display.
+ * @param   array   $view_args  Optional. Arguments to pass through to the view itself.
+ * @return  void
  * @since 	1.0.0
  */
 function charitable_admin_view( $view, $view_args = array() ) {
@@ -47,7 +47,7 @@ function charitable_admin_view( $view, $view_args = array() ) {
 /**
  * Returns the Charitable_Settings helper.
  *
- * @return 	Charitable_Settings
+ * @return  Charitable_Settings
  * @since 	1.0.0
  */
 function charitable_get_admin_settings() {
@@ -67,7 +67,7 @@ function charitable_get_admin_notices() {
 /**
  * Returns whether we are currently viewing the Charitable settings area.
  *
- * @param   string $tab Optional. If passed, the function will also check that we are on the given tab.
+ * @param   string   $tab  Optional. If passed, the function will also check that we are on the given tab.
  * @return  boolean
  * @since   1.2.0
  */
@@ -107,8 +107,8 @@ function charitable_is_settings_view( $tab = '' ) {
  *
  * @global  $wp_settings_fields Storage array of settings fields and their pages/sections
  *
- * @param   string  $page       Slug title of the admin page who's settings fields you want to show.
- * @param   string  $section    Slug title of the settings section who's fields you want to show.
+ * @param   string  $page     Slug title of the admin page who's settings fields you want to show.
+ * @param   string  $section  Slug title of the settings section who's fields you want to show.
  * @return  string
  * @since   1.0.0
  */
@@ -151,10 +151,10 @@ function charitable_do_settings_fields( $page, $section ) {
 /**
  * Add new tab to the Charitable settings area.
  *
- * @param   string[] $tabs
- * @param   string $key
- * @param   string $name
- * @param   mixed[] $args
+ * @param   string[]  $tabs
+ * @param   string    $key
+ * @param   string    $name
+ * @param   mixed[]   $args
  * @return  string[]
  * @since   1.3.0
  */
