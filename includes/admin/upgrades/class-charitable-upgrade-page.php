@@ -97,7 +97,7 @@ if ( ! class_exists( 'Charitable_Upgrade_Page' ) ) :
 		/**
 		 * Return the current upgrade action.
 		 *
-		 * @return  false|string False if no action was specified.
+		 * @return  false|string  False if no action was specified.
 		 * @access  public
 		 * @since   1.3.0
 		 */
@@ -157,8 +157,8 @@ if ( ! class_exists( 'Charitable_Upgrade_Page' ) ) :
 		/**
 		 * Return the total number of steps.
 		 *
-		 * @param   int $total
-		 * @param   int $number
+		 * @param   int  $total
+		 * @param   int  $number
 		 * @return  int
 		 * @access  public
 		 * @since   1.3.0
@@ -166,6 +166,7 @@ if ( ! class_exists( 'Charitable_Upgrade_Page' ) ) :
 		public function get_steps( $total, $number ) {
 			return round( ( $total / $number ), 0 );
 		}
+
 	}
 
 endif;
