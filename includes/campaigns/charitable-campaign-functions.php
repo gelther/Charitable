@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Returns the given campaign.
  *
- * @param   int     $campaign_id
+ * @param   int                  $campaign_id
  * @return  Charitable_Campaign
  * @since   1.0.0
  */
@@ -48,7 +48,7 @@ function charitable_get_current_campaign_id() {
 /**
  * Returns whether the current user is the creator of the given campaign.
  *
- * @param   int     $campaign_id
+ * @param   int      $campaign_id
  * @return  boolean
  * @since   1.0.0
  */
