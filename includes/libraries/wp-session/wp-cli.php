@@ -18,8 +18,8 @@ class WP_Session_Command extends \WP_CLI_Command {
 	 *
 	 * @global wpdb $wpdb
 	 *
-	 * @param array $args
-	 * @param array $assoc_args
+	 * @param  array  $args
+	 * @param  array  $assoc_args
 	 */
 	public function count( $args, $assoc_args ) {
 		$sessions = WP_Session_Utils::count_sessions();
@@ -50,8 +50,8 @@ class WP_Session_Command extends \WP_CLI_Command {
 	 *
 	 * @synopsis [--all] [--batch=<batch>] [--limit=<limit>]
 	 *
-	 * @param array $args
-	 * @param array $assoc_args
+	 * @param  array  $args
+	 * @param  array  $assoc_args
 	 */
 	public function delete( $args, $assoc_args ) {
 		if ( isset( $assoc_args['limit'] ) ) {
@@ -74,7 +74,7 @@ class WP_Session_Command extends \WP_CLI_Command {
 		/**
 		 * Determine the size of each batch for deletion.
 		 *
-		 * @param int
+		 * @param  int
 		 */
 		$batch = isset( $assoc_args['batch'] ) ? absint( $assoc_args['batch'] ) : apply_filters( 'wp_session_delete_batch_size', 1000 );
 
@@ -117,8 +117,8 @@ class WP_Session_Command extends \WP_CLI_Command {
 	 *
 	 * @synopsis <count> [--expires=<date>]
 	 *
-	 * @param array $args
-	 * @param array $assoc_args
+	 * @param  array  $args
+	 * @param  array  $assoc_args
 	 */
 	public function generate( $args, $assoc_args ) {
 		$count = absint( $args[0] );
@@ -153,6 +153,7 @@ class WP_Session_Command extends \WP_CLI_Command {
 		$wp_object_cache->memcache_debug = array();
 		$wp_object_cache->cache          = array();
 	}
+
 }
 
 \WP_CLI::add_command( 'session', 'WP_Session_Command' );
