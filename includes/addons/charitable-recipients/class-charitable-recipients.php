@@ -71,7 +71,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 		/**
 		 * Activate the addon.
 		 *
-		 * @return  boolean Whether the add-on was activated.
+		 * @return  boolean  Whether the add-on was activated.
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -85,6 +85,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 
 			return true;
 		}
+
 	}
 
 endif;
