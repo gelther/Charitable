@@ -24,12 +24,11 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param 	array $args Arguments used in query.
+		 * @param  array  $args  Arguments used in query.
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function __construct( $args = array() ) {
-
 			$defaults = array(
 				// Use 'posts' to get standard post objects.
 				'output'   => 'donations',
@@ -54,7 +53,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 			$this->position = 0;
 			$this->prepare_query();
 			$this->results = $this->get_donations();
-
 		}
 
 		/**
@@ -65,7 +63,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		 * @since   1.4.0
 		 */
 		public function get_donations() {
-
 			$records = $this->query();
 
 			/**
@@ -93,7 +90,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 			}
 
 			return $records;
-
 		}
 
 		/**
@@ -104,7 +100,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		 * @since   1.4.0
 		 */
 		public function setup_fields() {
-
 			/* If we are returning Donation objects, we only need to return the donation IDs. */
 			if ( 'donations' == $this->get( 'output' ) ) {
 				return;
@@ -112,7 +107,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 
 			add_filter( 'charitable_query_fields', array( $this, 'donation_fields' ), 4 );
 			add_filter( 'charitable_query_fields', array( $this, 'donation_calc_fields' ), 5 );
-
 		}
 
 		/**
@@ -123,7 +117,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		 * @since   1.4.0
 		 */
 		public function setup_orderby() {
-
 			$orderby = $this->get( 'orderby', false );
 
 			if ( ! $orderby ) {
@@ -139,7 +132,6 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 					add_filter( 'charitable_query_orderby', array( $this, 'orderby_donation_amount' ) );
 					break;
 			}
-
 		}
 
 		/**
@@ -150,18 +142,16 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		 * @since   1.4.0
 		 */
 		public function unhook_callbacks() {
-
-			remove_action( 'charitable_pre_query',     array( $this, 'setup_fields' ) );
-			remove_filter( 'charitable_query_fields',  array( $this, 'donation_fields' ), 4 );
-			remove_filter( 'charitable_query_fields',  array( $this, 'donation_calc_fields' ), 5 );
-			remove_filter( 'charitable_query_join',    array( $this, 'join_campaign_donations_table_on_donation' ), 5 );
-			remove_filter( 'charitable_query_where',   array( $this, 'where_status_is_in' ), 5 );
-			remove_filter( 'charitable_query_where',   array( $this, 'where_campaign_is_in' ), 6 );
-			remove_filter( 'charitable_query_where',   array( $this, 'where_donor_id_is_in' ), 7 );
+			remove_action( 'charitable_pre_query', array( $this, 'setup_fields' ) );
+			remove_filter( 'charitable_query_fields', array( $this, 'donation_fields' ), 4 );
+			remove_filter( 'charitable_query_fields', array( $this, 'donation_calc_fields' ), 5 );
+			remove_filter( 'charitable_query_join', array( $this, 'join_campaign_donations_table_on_donation' ), 5 );
+			remove_filter( 'charitable_query_where', array( $this, 'where_status_is_in' ), 5 );
+			remove_filter( 'charitable_query_where', array( $this, 'where_campaign_is_in' ), 6 );
+			remove_filter( 'charitable_query_where', array( $this, 'where_donor_id_is_in' ), 7 );
 			remove_filter( 'charitable_query_orderby', array( $this, 'orderby_date' ) );
 			remove_filter( 'charitable_query_orderby', array( $this, 'orderby_donation_amount' ) );
-			remove_action( 'charitable_post_query',    array( $this, 'unhook_callbacks' ) );
-
+			remove_action( 'charitable_post_query', array( $this, 'unhook_callbacks' ) );
 		}
 
 		/**
@@ -172,17 +162,16 @@ if ( ! class_exists( 'Charitable_Donations_Query' ) ) :
 		 * @since   1.4.0
 		 */
 		protected function prepare_query() {
-
-			add_action( 'charitable_pre_query',     array( $this, 'setup_fields' ) );
-			add_action( 'charitable_pre_query',     array( $this, 'setup_orderby' ) );
-			add_filter( 'charitable_query_join',    array( $this, 'join_campaign_donations_table_on_donation' ), 5 );
-			add_filter( 'charitable_query_where',   array( $this, 'where_status_is_in' ), 5 );
-			add_filter( 'charitable_query_where',   array( $this, 'where_campaign_is_in' ), 6 );
-			add_filter( 'charitable_query_where',   array( $this, 'where_donor_id_is_in' ), 7 );
+			add_action( 'charitable_pre_query', array( $this, 'setup_fields' ) );
+			add_action( 'charitable_pre_query', array( $this, 'setup_orderby' ) );
+			add_filter( 'charitable_query_join', array( $this, 'join_campaign_donations_table_on_donation' ), 5 );
+			add_filter( 'charitable_query_where', array( $this, 'where_status_is_in' ), 5 );
+			add_filter( 'charitable_query_where', array( $this, 'where_campaign_is_in' ), 6 );
+			add_filter( 'charitable_query_where', array( $this, 'where_donor_id_is_in' ), 7 );
 			add_filter( 'charitable_query_groupby', array( $this, 'groupby_donation_id' ) );
-			add_action( 'charitable_post_query',    array( $this, 'unhook_callbacks' ) );
-
+			add_action( 'charitable_post_query', array( $this, 'unhook_callbacks' ) );
 		}
+
 	}
 
 endif;
