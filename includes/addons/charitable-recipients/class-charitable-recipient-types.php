@@ -67,13 +67,13 @@ if ( ! class_exists( 'Charitable_Recipient_Types' ) ) :
 		 */
 		public function register( $recipient_type, $args = array() ) {
 			$defaults = array(
-				'label' => '',
-				'description' => '',
-				'admin_label' => '',
-				'admin_description' => '',
-				'searchable' => false,
+				'label'              => '',
+				'description'        => '',
+				'admin_label'        => '',
+				'admin_description'  => '',
+				'searchable'         => false,
 				'search_placeholder' => '',
-				'options' => array(),
+				'options'            => array(),
 			);
 
 			$args = wp_parse_args( $args, $defaults );
@@ -91,6 +91,7 @@ if ( ! class_exists( 'Charitable_Recipient_Types' ) ) :
 		public function get_types() {
 			return $this->types;
 		}
+
 	}
 
 endif;
