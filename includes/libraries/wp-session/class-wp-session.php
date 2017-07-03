@@ -51,9 +51,9 @@ final class WP_Session extends Recursive_ArrayAccess {
 	/**
 	 * Retrieve the current session instance.
 	 *
-	 * @param bool $session_id Session ID from which to populate data.
+	 * @param   bool             $session_id  Session ID from which to populate data.
 	 *
-	 * @return bool|WP_Session
+	 * @return  bool|WP_Session
 	 */
 	public static function get_instance() {
 		if ( ! self::$instance ) {
@@ -68,16 +68,16 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 * Will rebuild the session collection from the given session ID if it exists. Otherwise, will
 	 * create a new session with that ID.
 	 *
-	 * @param $session_id
+	 * @param  $session_id
 	 * @uses apply_filters Calls `wp_session_expiration` to determine how long until sessions expire.
 	 */
 	protected function __construct() {
 		if ( isset( $_COOKIE[WP_SESSION_COOKIE] ) ) {
-			$cookie = stripslashes( $_COOKIE[WP_SESSION_COOKIE] );
+			$cookie        = stripslashes( $_COOKIE[WP_SESSION_COOKIE] );
 			$cookie_crumbs = explode( '||', $cookie );
 
-			$this->session_id = preg_replace("/[^A-Za-z0-9_]/", '', $cookie_crumbs[0] );
-			$this->expires = absint( $cookie_crumbs[1] );
+			$this->session_id  = preg_replace( '/[^A-Za-z0-9_]/', '', $cookie_crumbs[0] );
+			$this->expires     = absint( $cookie_crumbs[1] );
 			$this->exp_variant = absint( $cookie_crumbs[2] );
 
 			// Update the session expiration if we're past the variant time
@@ -94,7 +94,6 @@ final class WP_Session extends Recursive_ArrayAccess {
 		$this->read_data();
 
 		$this->set_cookie();
-
 	}
 
 	/**
@@ -117,7 +116,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 */
 	protected function set_expiration() {
 		$this->exp_variant = time() + (int) apply_filters( 'wp_session_expiration_variant', 24 * 60 );
-		$this->expires = time() + (int) apply_filters( 'wp_session_expiration', 30 * 60 );
+		$this->expires     = time() + (int) apply_filters( 'wp_session_expiration', 30 * 60 );
 	}
 
 	/**
@@ -129,7 +128,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	protected function set_cookie() {
 		$secure   = apply_filters( 'wp_session_cookie_secure', false );
 		$httponly = apply_filters( 'wp_session_cookie_httponly', false );
-		setcookie( WP_SESSION_COOKIE, $this->session_id . '||' . $this->expires . '||' . $this->exp_variant , $this->expires, COOKIEPATH, COOKIE_DOMAIN, $secure, $httponly );
+		setcookie( WP_SESSION_COOKIE, $this->session_id . '||' . $this->expires . '||' . $this->exp_variant, $this->expires, COOKIEPATH, COOKIE_DOMAIN, $secure, $httponly );
 	}
 
 	/**
@@ -137,7 +136,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 *
 	 * Automatically resets the expiration time for the session transient to some time in the future.
 	 *
-	 * @return array
+	 * @return  array
 	 */
 	protected function read_data() {
 		$this->container = get_option( "_wp_session_{$this->session_id}", array() );
@@ -163,7 +162,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	/**
 	 * Output the current container contents as a JSON-encoded string.
 	 *
-	 * @return string
+	 * @return  string
 	 */
 	public function json_out() {
 		return json_encode( $this->container );
@@ -172,9 +171,9 @@ final class WP_Session extends Recursive_ArrayAccess {
 	/**
 	 * Decodes a JSON string and, if the object is an array, overwrites the session container with its contents.
 	 *
-	 * @param string $data
+	 * @param   string  $data
 	 *
-	 * @return bool
+	 * @return  bool
 	 */
 	public function json_in( $data ) {
 		$array = json_decode( $data );
@@ -190,7 +189,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	/**
 	 * Regenerate the current session's ID.
 	 *
-	 * @param bool $delete_old Flag whether or not to delete the old session data from the server.
+	 * @param  bool  $delete_old  Flag whether or not to delete the old session data from the server.
 	 */
 	public function regenerate_id( $delete_old = false ) {
 		if ( $delete_old ) {
@@ -205,16 +204,16 @@ final class WP_Session extends Recursive_ArrayAccess {
 	/**
 	 * Check if a session has been initialized.
 	 *
-	 * @return bool
+	 * @return  bool
 	 */
 	public function session_started() {
-		return !!self::$instance;
+		return ! ! self::$instance;
 	}
 
 	/**
 	 * Return the read-only cache expiration value.
 	 *
-	 * @return int
+	 * @return  int
 	 */
 	public function cache_expiration() {
 		return $this->expires;
@@ -226,4 +225,5 @@ final class WP_Session extends Recursive_ArrayAccess {
 	public function reset() {
 		$this->container = array();
 	}
+
 }
