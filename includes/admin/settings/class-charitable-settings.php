@@ -72,20 +72,18 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		 * @since   1.0.0
 		 */
 		public function get_sections() {
-
 			return apply_filters( 'charitable_settings_tabs', array(
 				'general'  => __( 'General', 'charitable' ),
 				'gateways' => __( 'Payment Gateways', 'charitable' ),
 				'emails'   => __( 'Emails', 'charitable' ),
 				'advanced' => __( 'Advanced', 'charitable' ),
 			) );
-
 		}
 
 		/**
 		 * Optionally add the extensions tab.
 		 *
-		 * @param   string[] $tabs
+		 * @param   string[]  $tabs
 		 * @return  string[]
 		 * @access  public
 		 * @since   1.3.0
@@ -168,13 +166,12 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Sanitize submitted settings before saving to the database.
 		 *
-		 * @param   array $values
+		 * @param   array   $values
 		 * @return  string
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function sanitize_settings( $values ) {
-
 			$old_values = get_option( 'charitable_settings', array() );
 			$new_values = array();
 
@@ -198,8 +195,8 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Checkbox settings should always be either 1 or 0.
 		 *
-		 * @param   mixed       $value
-		 * @param   array       $field
+		 * @param   mixed    $value
+		 * @param   array    $field
 		 * @return  boolean
 		 * @access  public
 		 * @since   1.0.0
@@ -215,7 +212,7 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Render field. This is the default callback used for all fields, unless an alternative callback has been specified.
 		 *
-		 * @param   array       $args
+		 * @param   array  $args
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -225,7 +222,6 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 
 			charitable_admin_view( 'settings/' . $field_type, $args );
 		}
-
 
 		/**
 		 * Returns an array of all pages in the id=>title format.
@@ -262,9 +258,9 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Add an update message.
 		 *
-		 * @param 	string  $message
-		 * @param 	string  $type
-		 * @param 	boolean $dismissible
+		 * @param   string    $message
+		 * @param   string    $type
+		 * @param   boolean   $dismissible
 		 * @return  string[]
 		 * @access  public
 		 * @since   1.4.6
@@ -385,10 +381,10 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Get the submitted value for a particular setting.
 		 *
-		 * @param   string $key       The key of the setting being saved.
-		 * @param   array  $field     The setting field.
-		 * @param   array  $submitted The submitted values.
-		 * @return  mixed|null        Returns null if the value was not submitted or is not applicable.
+		 * @param   string      $key        The key of the setting being saved.
+		 * @param   array       $field      The setting field.
+		 * @param   array       $submitted  The submitted values.
+		 * @return  mixed|null              Returns null if the value was not submitted or is not applicable.
 		 * @access  private
 		 * @since   1.0.0
 		 */
@@ -425,14 +421,14 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Return the submitted values for the given section.
 		 *
-		 * @param   string $section   The section being edited.
-		 * @param   array  $submitted The submitted values.
+		 * @param   string  $section    The section being edited.
+		 * @param   array   $submitted  The submitted values.
 		 * @return  array
 		 * @access  private
 		 * @since   1.0.0
 		 */
 		private function get_section_submitted_values( $section, $submitted ) {
-			$values = array();
+			$values      = array();
 			$form_fields = $this->get_fields();
 
 			if ( ! isset( $form_fields[ $section ] ) ) {
@@ -489,8 +485,8 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Returns whether the given key indicates the start of a new section of the settings.
 		 *
-		 * @param   string  $section
-		 * @param   array   $submitted
+		 * @param   string   $section
+		 * @param   array    $submitted
 		 * @return  boolean
 		 * @access  private
 		 * @since   1.0.0
@@ -503,15 +499,15 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		 * @deprecated 1.4.13
 		 */
 		public function get_update_messages() {
-			
 			charitable_get_deprecated()->deprecated_function(
 				__METHOD__,
 				'1.4.13',
 				'Charitable_Admin_Notices::get_notices()'
 			);
-			
+
 			return charitable_get_admin_notices()->get_notices();
 		}
+
 	}
 
 endif;
