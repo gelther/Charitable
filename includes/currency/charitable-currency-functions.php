@@ -35,7 +35,7 @@ function charitable_get_currency() {
 /**
  * Formats the monetary amount.
  *
- * @param   string $amount The amount to be formatted.
+ * @param   string  $amount  The amount to be formatted.
  * @return  string
  * @since   1.1.5
  */
@@ -46,7 +46,7 @@ function charitable_format_money( $amount ) {
 /**
  * Sanitize an amount, converting it into a float.
  *
- * @param   string $amount The amount to be sanitized.
+ * @param   string          $amount  The amount to be sanitized.
  * @return  float|WP_Error
  * @since   1.4.0
  */
