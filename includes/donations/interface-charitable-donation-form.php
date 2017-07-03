@@ -26,7 +26,7 @@ interface Charitable_Donation_Form_Interface {
 	/**
 	 * Render the donation form.
 	 *
-	 * @return 	void
+	 * @return  void
 	 * @access 	public
 	 * @since 	1.0.0
 	 */
@@ -48,7 +48,7 @@ interface Charitable_Donation_Form_Interface {
 	 * @access  public
 	 * @since   1.0.0
 	 */
-	public function get_donation_values();	
+	public function get_donation_values();
 }
 
 endif; // End interface_exists check.
