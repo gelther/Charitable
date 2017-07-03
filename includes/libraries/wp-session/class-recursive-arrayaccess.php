@@ -34,7 +34,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	/**
 	 * Default object constructor.
 	 *
-	 * @param array $data
+	 * @param  array  $data
 	 */
 	protected function __construct( $data = array() ) {
 		foreach ( $data as $key => $value ) {
@@ -56,7 +56,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	/**
 	 * Output the data container as a multidimensional array.
 	 *
-	 * @return array
+	 * @return  array
 	 */
 	public function toArray() {
 		$data = $this->container;
@@ -77,12 +77,12 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/arrayaccess.offsetexists.php
 	 *
-	 * @param mixed $offset An offset to check for.
+	 * @param   mixed    $offset  An offset to check for.
 	 *
-	 * @return boolean true on success or false on failure.
+	 * @return  boolean           true on success or false on failure.
 	 */
 	public function offsetExists( $offset ) {
-		return isset( $this->container[ $offset ]) ;
+		return isset( $this->container[ $offset ] ) ;
 	}
 
 	/**
@@ -90,9 +90,9 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/arrayaccess.offsetget.php
 	 *
-	 * @param mixed $offset The offset to retrieve.
+	 * @param   mixed  $offset  The offset to retrieve.
 	 *
-	 * @return mixed Can return all value types.
+	 * @return  mixed           Can return all value types.
 	 */
 	public function offsetGet( $offset ) {
 		return isset( $this->container[ $offset ] ) ? $this->container[ $offset ] : null;
@@ -103,10 +103,10 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/arrayaccess.offsetset.php
 	 *
-	 * @param mixed $offset The offset to assign the value to.
-	 * @param mixed $value  The value to set.
+	 * @param   mixed  $offset  The offset to assign the value to.
+	 * @param   mixed  $value   The value to set.
 	 *
-	 * @return void
+	 * @return  void
 	 */
 	public function offsetSet( $offset, $data ) {
 		if ( is_array( $data ) ) {
@@ -126,17 +126,16 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/arrayaccess.offsetunset.php
 	 *
-	 * @param mixed $offset The offset to unset.
+	 * @param   mixed  $offset  The offset to unset.
 	 *
-	 * @return void
+	 * @return  void
 	 */
 	public function offsetUnset( $offset ) {
 		unset( $this->container[ $offset ] );
 
 		$this->dirty = true;
 	}
-	
-	
+
 	/*****************************************************************/
 	/*                     Iterator Implementation                   */
 	/*****************************************************************/
@@ -146,7 +145,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/iterator.current.php
 	 *
-	 * @return mixed
+	 * @return  mixed
 	 */
 	public function current() {
 		return current( $this->container );
@@ -157,7 +156,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/iterator.key.php
 	 *
-	 * @return mixed
+	 * @return  mixed
 	 */
 	public function key() {
 		return key( $this->container );
@@ -168,7 +167,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/iterator.next.php
 	 *
-	 * @return void
+	 * @return  void
 	 */
 	public function next() {
 		next( $this->container );
@@ -179,7 +178,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/iterator.rewind.php
 	 *
-	 * @return void
+	 * @return  void
 	 */
 	public function rewind() {
 		reset( $this->container );
@@ -190,7 +189,7 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/iterator.rewind.php
 	 *
-	 * @return bool
+	 * @return  bool
 	 */
 	public function valid() {
 		return $this->offsetExists( $this->key() );
@@ -205,9 +204,10 @@ class Recursive_ArrayAccess implements ArrayAccess, Iterator, Countable {
 	 *
 	 * @link http://php.net/manual/en/countable.count.php
 	 *
-	 * @return int
+	 * @return  int
 	 */
 	public function count() {
 		return count( $this->container );
 	}
+
 }
