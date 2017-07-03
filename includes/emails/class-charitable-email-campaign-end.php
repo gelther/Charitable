@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		/**
 		 * Instantiate the email class, defining its key values.
 		 *
-		 * @param   mixed[]  $objects
+		 * @param  mixed[]  $objects
 		 * @access  public
 		 * @since   1.1.0
 		 */
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		/**
 		 * Static method that is fired within 24 hours after a campaign is finished.
 		 *
-		 * @param   int $campaign_id
+		 * @param   int      $campaign_id
 		 * @return  boolean
 		 * @access  public
 		 * @static
@@ -165,20 +165,20 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( '[charitable_email show=campaign_title] by [charitable_email show=campaign_creator] finished on [charitable_email show=campaign_end_date].', 'charitable' ) ?></p>
-<p>[charitable_email show=campaign_achieved_goal success="<?php _e( 'The campaign achieved its fundraising goal.', 'charitable' ) ?>" failure="<?php _e( 'The campaign did not reach its fundraising goal.', 'charitable' ) ?>"]</p>
+<p><?php _e( '[charitable_email show=campaign_title] by [charitable_email show=campaign_creator] finished on [charitable_email show=campaign_end_date].', 'charitable' ); ?></p>
+<p>[charitable_email show=campaign_achieved_goal success="<?php _e( 'The campaign achieved its fundraising goal.', 'charitable' ); ?>" failure="<?php _e( 'The campaign did not reach its fundraising goal.', 'charitable' ); ?>"]</p>
 <table>
 <tbody>
 <tr>
-	<th><?php _e( 'Amount raised', 'charitable' ) ?></th>
+	<th><?php _e( 'Amount raised', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_donated_amount]</td>
 </tr>
 <tr>
-	<th><?php _e( 'Number of donors', 'charitable' ) ?></th>
+	<th><?php _e( 'Number of donors', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_donor_count]</td>
 </tr>
 <tr>
-	<th><?php _e( 'Fundraising goal', 'charitable' ) ?></th>
+	<th><?php _e( 'Fundraising goal', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_goal]</td>
 </tr>
 </tbody>
@@ -188,6 +188,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 
 			return apply_filters( 'charitable_email_campaign_end_default_body', $body, $this );
 		}
+
 	}
 
 endif;
