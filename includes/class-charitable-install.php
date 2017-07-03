@@ -54,7 +54,7 @@ if ( ! class_exists( 'Charitable_Install' ) ) :
 		/**
 		 * Create wp roles and assign capabilities
 		 *
-		 * @return 	void
+		 * @return  void
 		 * @access 	protected
 		 * @since 	1.0.0
 		 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'Charitable_Install' ) ) :
 		/**
 		 * Create database tables.
 		 *
-		 * @return 	void
+		 * @return  void
 		 * @access 	protected
 		 * @since 	1.0.0
 		 */
@@ -95,6 +95,7 @@ if ( ! class_exists( 'Charitable_Install' ) ) :
 			require_once( 'admin/upgrades/class-charitable-upgrade.php' );
 			Charitable_Upgrade::get_instance()->populate_upgrade_log_on_install();
 		}
+
 	}
 
 endif;
