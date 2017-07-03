@@ -24,13 +24,13 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 	class Charitable_Session {
 
 		/**
-	     * The single instance of this class.
-	     *
-	     * @var     Charitable_Session|null
-	     * @access  private
-	     * @static
-	     */
-	    private static $instance = null;
+		 * The single instance of this class.
+		 *
+		 * @var     Charitable_Session|null
+		 * @access  private
+		 * @static
+		 */
+		private static $instance = null;
 
 		/**
 		 * Holds our session data
@@ -48,7 +48,6 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		 * @since 	1.0.0
 		 */
 		private function __construct() {
-
 			if ( ! $this->should_start_session() ) {
 				return;
 			}
@@ -79,7 +78,6 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 			add_filter( 'wp_session_expiration_variant', array( $this, 'set_session_expiration_variant_length' ), 99999 );
 
 			add_action( 'init', array( $this, 'init' ), -1 );
-
 		}
 
 		/**
@@ -96,25 +94,25 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		}
 
 		/**
-	     * Returns and/or create the single instance of this class.
-	     *
-	     * @return  Charitable_Session
-	     * @access  public
-	     * @since   1.2.0
-	     */
-	    public static function get_instance() {
-	        if ( is_null( self::$instance ) ) {
-	            self::$instance = new Charitable_Session();
-	        }
+		 * Returns and/or create the single instance of this class.
+		 *
+		 * @return  Charitable_Session
+		 * @access  public
+		 * @since   1.2.0
+		 */
+		public static function get_instance() {
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new Charitable_Session();
+			}
 
-	        return self::$instance;
-	    }
+			return self::$instance;
+		}
 
 		/**
 		 * Return a session variable.
 		 *
-		 * @param 	string $key Session variable key.
-		 * @return 	mixed Session variable
+		 * @param   string  $key  Session variable key.
+		 * @return  mixed         Session variable
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -126,9 +124,9 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Set a session variable.
 		 *
-		 * @param 	string $key   Session variable key.
-		 * @param 	mixed  $value The value of the session variable.
-		 * @return 	mixed The session variable value.
+		 * @param   string  $key    Session variable key.
+		 * @param   mixed   $value  The value of the session variable.
+		 * @return  mixed           The session variable value.
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -147,7 +145,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Set the length of the cookie session to 24 hours.
 		 *
-		 * @return 	int
+		 * @return  int
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -162,7 +160,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Set the cookie expiration variant time to 23 hours.
 		 *
-		 * @return 	int
+		 * @return  int
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -177,8 +175,8 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Add a donation to a campaign to the session.
 		 *
-		 * @param 	int $campaign_id Campaign ID.
-		 * @param 	int $amount 	 Donation amount.
+		 * @param   int   $campaign_id  Campaign ID.
+		 * @param   int   $amount       Donation amount.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -186,7 +184,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		public function add_donation( $campaign_id, $amount ) {
 			$donations = $this->get( 'donations' );
 
-			$campaign_donation = isset( $donations[ $campaign_id ] ) ? $donations[ $campaign_id ] : array();
+			$campaign_donation           = isset( $donations[ $campaign_id ] ) ? $donations[ $campaign_id ] : array();
 			$campaign_donation['amount'] = floatval( $amount );
 
 			$donations[ $campaign_id ] = $campaign_donation;
@@ -197,7 +195,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Remove a donation from the session.
 		 *
-		 * @param 	int $campaign_id Campaign ID.
+		 * @param   int   $campaign_id  Campaign ID.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -215,7 +213,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Return the donation in session for a campaign.
 		 *
-		 * @param 	int $campaign_id The campaign ID.
+		 * @param   int          $campaign_id  The campaign ID.
 		 * @return  false|array
 		 * @access  public
 		 * @since   1.0.0
@@ -228,7 +226,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Store the donation key in the session, to ensure the user can access their receipt.
 		 *
-		 * @param 	string $donation_key The transaction key for the donation.
+		 * @param   string  $donation_key  The transaction key for the donation.
 		 * @return  void
 		 * @access  public
 		 * @since   1.1.2
@@ -248,7 +246,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Checks whether the donation key is stored in the session.
 		 *
-		 * @param 	string $donation_key The transaction key for the donation.
+		 * @param   string   $donation_key  The transaction key for the donation.
 		 * @return  boolean
 		 * @access  public
 		 * @since   1.0.0
@@ -277,7 +275,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		/**
 		 * Return any notices set in the session.
 		 *
-		 * @return 	array Session variable
+		 * @return  array  Session variable
 		 * @access  public
 		 * @since 	1.4.0
 		 */
@@ -289,17 +287,17 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 			}
 
 			return array(
-				'error'		=> array(),
-				'warning'	=> array(),
-				'success'	=> array(),
-				'info'		=> array(),
+				'error'   => array(),
+				'warning' => array(),
+				'success' => array(),
+				'info'    => array(),
 			);
 		}
 
 		/**
 		 * Returns the session ID.
 		 *
-		 * @return 	string Session ID
+		 * @return  string  Session ID
 		 * @access 	public
 		 * @since 	1.3.5
 		 */
@@ -315,7 +313,6 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		 * @since   1.4.17
 		 */
 		public function should_start_session() {
-
 			$start_session = true;
 
 			if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
@@ -334,7 +331,6 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 			}
 
 			return apply_filters( 'charitable_start_session', $start_session );
-
 		}
 
 		/**
@@ -347,7 +343,6 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 		 * @since   1.4.17
 		 */
 		public function get_blacklist() {
-
 			$blacklist = apply_filters( 'charitable_session_start_uri_blacklist', array(
 				'feed',
 				'feed/rss',
@@ -368,6 +363,7 @@ if ( ! class_exists( 'Charitable_Session' ) ) :
 
 			return $blacklist;
 		}
+
 	}
 
 endif;
