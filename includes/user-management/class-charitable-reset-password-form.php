@@ -63,7 +63,7 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param   array $args User-defined shortcode attributes.
+		 * @param  array  $args  User-defined shortcode attributes.
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -76,8 +76,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		/**
 		 * Adds hidden fields to the start of the donation form.
 		 *
-		 * @param 	Charitable_Form $form The form object.
-		 * @return 	void
+		 * @param   Charitable_Form  $form  The form object.
+		 * @return  void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -89,8 +89,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			}
 
 			?>
-			<input type="hidden" name="login" value="<?php echo esc_attr( $this->login ) ?>" autocomplete="off" />
-			<input type="hidden" name="key" value="<?php echo esc_attr( $this->key ) ?>" />
+			<input type="hidden" name="login" value="<?php echo esc_attr( $this->login ); ?>" autocomplete="off" />
+			<input type="hidden" name="key" value="<?php echo esc_attr( $this->key ); ?>" />
 			<?php
 		}
 
@@ -133,13 +133,12 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		/**
 		 * Reset the password.
 		 *
-		 * @return  bool|WP_Error True: when finish. WP_Error on error
+		 * @return  bool|WP_Error  True: when finish. WP_Error on error
 		 * @access  public
 		 * @static
 		 * @since   1.4.0
 		 */
 		public static function reset_password() {
-
 			$form = new Charitable_Reset_Password_Form();
 
 			if ( ! $form->validate_nonce() || ! $form->validate_honeypot() ) {
@@ -182,7 +181,6 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			wp_safe_redirect( charitable_get_permalink( 'login_page' ) );
 
 			exit();
-
 		}
 
 		/**
@@ -193,7 +191,6 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 * @since   1.4.0
 		 */
 		protected function parse_reset_key() {
-
 			$this->key   = null;
 			$this->login = null;
 
@@ -224,8 +221,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			/* Reset key / login is correct, display reset password form with hidden key / login values */
 			$this->key   = $key;
 			$this->login = $login;
-
 		}
+
 	}
 
 endif;
