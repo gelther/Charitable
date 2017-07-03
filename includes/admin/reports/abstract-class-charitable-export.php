@@ -48,13 +48,13 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param   mixed[] $args
+		 * @param  mixed[]  $args
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function __construct( $args = array() ) {
 			$this->columns = $this->get_csv_columns();
-			$this->args = wp_parse_args( $args, $this->defaults );
+			$this->args    = wp_parse_args( $args, $this->defaults );
 
 			$this->export();
 		}
@@ -78,7 +78,6 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 * @since   1.0.0
 		 */
 		protected function export() {
-
 			$data = array_map( array( $this, 'map_data' ), $this->get_data() );
 
 			$this->print_headers();
@@ -102,7 +101,7 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		/**
 		 * Receives a row of data and maps it to the keys defined in the columns.
 		 *
-		 * @param   object|array $data
+		 * @param   object|array  $data
 		 * @return  mixed
 		 * @access  protected
 		 * @since   1.0.0
