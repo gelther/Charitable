@@ -69,7 +69,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 
 		/**
 		 * The absolute path to this plugin's directory.
-		 * 
+		 *
 		 * @var     string
 		 * @access  private
 		 */
@@ -489,7 +489,6 @@ if ( ! class_exists( 'Charitable' ) ) :
 			$api->register( new Charitable_Profile_Endpoint );
 			$api->register( new Charitable_Reset_Password_Endpoint );
 			$api->register( new Charitable_Registration_Endpoint );
-
 		}
 
 		/**
@@ -507,7 +506,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			return $this->endpoints;
 		}
 
-		/*
+		/**
 		 * Load plugin compatibility files on plugins_loaded hook.
 		 *
 		 * @return  void
@@ -533,7 +532,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			}
 
 			/* WP Rocket */
-			if ( defined( 'WP_ROCKET_VERSION' )  ) {
+			if ( defined( 'WP_ROCKET_VERSION' ) ) {
 				require_once( $includes_path . 'compat/charitable-wp-rocket-compat-functions.php' );
 			}
 
@@ -614,7 +613,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		/**
 		 * Stores an object in the plugin's registry.
 		 *
-		 * @param   mixed $object Object to be registered.
+		 * @param   mixed  $object  Object to be registered.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -632,8 +631,8 @@ if ( ! class_exists( 'Charitable' ) ) :
 		/**
 		 * Returns a registered object.
 		 *
-		 * @param   string $class The type of class you want to retrieve.
-		 * @return  mixed         The object if its registered. Otherwise false.
+		 * @param   string  $class  The type of class you want to retrieve.
+		 * @return  mixed           The object if its registered. Otherwise false.
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -644,8 +643,8 @@ if ( ! class_exists( 'Charitable' ) ) :
 		/**
 		 * Returns plugin paths.
 		 *
-		 * @param   string  $type          If empty, returns the path to the plugin.
-		 * @param   boolean $absolute_path If true, returns the file system path. If false, returns it as a URL.
+		 * @param   string   $type           If empty, returns the path to the plugin.
+		 * @param   boolean  $absolute_path  If true, returns the file system path. If false, returns it as a URL.
 		 * @return  string
 		 * @since   1.0.0
 		 */
@@ -746,7 +745,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		/**
 		 * Returns the model for one of Charitable's database tables.
 		 *
-		 * @param   string $table The database table to retrieve.
+		 * @param   string         $table  The database table to retrieve.
 		 * @return  Charitable_DB
 		 * @access  public
 		 * @since   1.0.0
@@ -794,13 +793,12 @@ if ( ! class_exists( 'Charitable' ) ) :
 		/**
 		 * Maybe activate Charitable when a new site is added in a multisite network.
 		 *
-		 * @param 	int $blog_id
+		 * @param   int      $blog_id
 		 * @return  boolean
 		 * @access  public
 		 * @since   1.4.6
 		 */
 		public function maybe_activate_charitable_on_new_site( $blog_id ) {
-
 			if ( is_plugin_active_for_network( basename( $this->directory_path ) . '/charitable.php' ) ) {
 
 				switch_to_blog( $blog_id );
@@ -816,14 +814,13 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @see 	register_activation_hook
 		 *
-		 * @param 	boolean $network_wide Whether to enable the plugin for all sites in the network
+		 * @param   boolean  $network_wide  Whether to enable the plugin for all sites in the network
 		 *                           	  or just the current site. Multisite only. Default is false.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function activate( $network_wide = false ) {
-
 			require_once( $this->get_path( 'includes' ) . 'class-charitable-install.php' );
 
 			if ( is_multisite() && $network_wide ) {
@@ -918,6 +915,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			charitable_get_deprecated()->deprecated_function( __METHOD__, '1.2.0', 'charitable_get_location_helper' );
 			return charitable_get_location_helper();
 		}
+
 	}
 
 	$charitable = new Charitable();
