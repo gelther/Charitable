@@ -25,7 +25,7 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Shortcode' ) ) :
 		 *
 		 * This receives the user-defined attributes and passes the logic off to the class.
 		 *
-		 * @param   array   $atts   User-defined shortcode attributes.
+		 * @param   array   $atts  User-defined shortcode attributes.
 		 * @return  string
 		 * @access  public
 		 * @static
@@ -34,6 +34,7 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Shortcode' ) ) :
 		public static function display( $atts ) {
 			return apply_filters( 'charitable_donation_receipt_shortcode', charitable_template_donation_receipt_output( '' ) );
 		}
+
 	}
 
 endif;
