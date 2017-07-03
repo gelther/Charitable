@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Registers a recipient type.
  *
- * @param   string $recipient_type The ID of the recipient type we're registering.
- * @param   array  $args           Set of arguments defining that recipient type.
+ * @param   string  $recipient_type  The ID of the recipient type we're registering.
+ * @param   array   $args            Set of arguments defining that recipient type.
  * @return  void
  * @since   1.0.0
  */
@@ -38,7 +38,7 @@ function charitable_get_recipient_types() {
 /**
  * Returns a given recipient type, or false if the recipient type is not registered.
  *
- * @param   string $recipient_type The recipient type we want to retrieve.
+ * @param   string       $recipient_type  The recipient type we want to retrieve.
  * @return  array|false
  * @since   1.0.0
  */
