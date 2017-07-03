@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Orders an array by the priority key.
  *
- * @param 	array $a First element.
- * @param 	array $b Element to compare against.
- * @return 	int
+ * @param   array  $a  First element.
+ * @param   array  $b  Element to compare against.
+ * @return  int
  * @since 	1.0.0
  */
 function charitable_priority_sort( $a, $b ) {
@@ -41,12 +41,12 @@ function charitable_priority_sort( $a, $b ) {
  *
  * Full credit to Pippin Williamson and the EDD team.
  *
- * @param 	string  $function 	Name of the function.
- * @return 	bool 				Whether or not function is disabled.
+ * @param   string  $function  Name of the function.
+ * @return  bool               Whether or not function is disabled.
  * @since 	1.0.0
  */
 function charitable_is_func_disabled( $function ) {
-	$disabled = explode( ',',  ini_get( 'disable_functions' ) );
+	$disabled = explode( ',', ini_get( 'disable_functions' ) );
 
 	return in_array( $function, $disabled );
 }
@@ -54,9 +54,9 @@ function charitable_is_func_disabled( $function ) {
 /**
  * Verify a nonce. This also just ensures that the nonce is set.
  *
- * @param   string $nonce
- * @param   string $action
- * @param   array  $request_args
+ * @param   string   $nonce
+ * @param   string   $action
+ * @param   array    $request_args
  * @return  boolean
  * @since   1.0.0
  */
@@ -129,7 +129,7 @@ function charitable_validate_absint( $i ) {
  * If there are two items, it will return a string like this: "x and y".
  * If there are three or more items, it will return a string like this: "x, y and z".
  *
- * @param   string[] $list
+ * @param   string[]  $list
  * @return  string
  * @since   1.3.0
  */
@@ -155,13 +155,12 @@ function charitable_list_to_sentence_part( $list ) {
  * We use WP_Locale to parse the month that the user has set.
  *
  * @global  WP_Locale $wp_locale
- * @param   string    $date
- * @param   string    $format The date format to return. Default is U (timestamp).
+ * @param   string        $date
+ * @param   string        $format  The date format to return. Default is U (timestamp).
  * @return  string|false
  * @since   1.4.10
  */
 function charitable_sanitize_date( $date, $format = 'U' ) {
-
 	global $wp_locale;
 
 	if ( empty( $date ) || ! $date ) {
@@ -170,16 +169,15 @@ function charitable_sanitize_date( $date, $format = 'U' ) {
 
 	list( $month, $day, $year ) = explode( ' ', $date );
 
-	$day   = trim( $day, ',' );
+	$day = trim( $day, ',' );
 
 	$month = 1 + array_search( $month, array_values( $wp_locale->month ) );
 
-	$time  = mktime( 0, 0, 0, $month, $day, $year );
+	$time = mktime( 0, 0, 0, $month, $day, $year );
 
 	if ( 'U' == $format ) {
 		return $time;
 	}
 
 	return date( $format, $time );
-
 }
