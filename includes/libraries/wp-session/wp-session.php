@@ -13,7 +13,7 @@
 /**
  * Return the current cache expire setting.
  *
- * @return int
+ * @return  int
  */
 function wp_session_cache_expire() {
 	$wp_session = WP_Session::get_instance();
@@ -31,7 +31,7 @@ function wp_session_commit() {
 /**
  * Load a JSON-encoded string into the current session.
  *
- * @param string $data
+ * @param  string  $data
  */
 function wp_session_decode( $data ) {
 	$wp_session = WP_Session::get_instance();
@@ -42,7 +42,7 @@ function wp_session_decode( $data ) {
 /**
  * Encode the current session's data as a JSON string.
  *
- * @return string
+ * @return  string
  */
 function wp_session_encode() {
 	$wp_session = WP_Session::get_instance();
@@ -53,9 +53,9 @@ function wp_session_encode() {
 /**
  * Regenerate the session ID.
  *
- * @param bool $delete_old_session
+ * @param   bool  $delete_old_session
  *
- * @return bool
+ * @return  bool
  */
 function wp_session_regenerate_id( $delete_old_session = false ) {
 	$wp_session = WP_Session::get_instance();
@@ -70,7 +70,7 @@ function wp_session_regenerate_id( $delete_old_session = false ) {
  *
  * Resumes an existing session based on a value sent by the _wp_session cookie.
  *
- * @return bool
+ * @return  bool
  */
 function wp_session_start() {
 	$wp_session = WP_Session::get_instance();
@@ -78,6 +78,7 @@ function wp_session_start() {
 
 	return $wp_session->session_started();
 }
+
 if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) {
 	add_action( 'plugins_loaded', 'wp_session_start' );
 }
@@ -85,7 +86,7 @@ if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) {
 /**
  * Return the current session status.
  *
- * @return int
+ * @return  int
  */
 function wp_session_status() {
 	$wp_session = WP_Session::get_instance();
@@ -115,6 +116,7 @@ function wp_session_write_close() {
 	$wp_session->write_data();
 	do_action( 'wp_session_commit' );
 }
+
 if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) {
 	add_action( 'shutdown', 'wp_session_write_close' );
 }
@@ -135,7 +137,7 @@ function wp_session_cleanup() {
 		/**
 		 * Determine the size of each batch for deletion.
 		 *
-		 * @param int
+		 * @param  int
 		 */
 		$batch_size = apply_filters( 'wp_session_delete_batch_size', 1000 );
 
